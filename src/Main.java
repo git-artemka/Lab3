@@ -18,7 +18,7 @@ public class Main{
         house.addPeople(rachel, zelda, doriGoldman, father);
 
         house.getRoom().addPeople(zelda, rachel);
-        rachel.takeZeldaToBed(zelda, house.getRoom().getBed());
+        rachel.takeZeldaToBed(zelda, house.getRoom());
         house.getRoom().deletePerson(rachel);
         zelda.dieInRoom(house.getRoom());
 

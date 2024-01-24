@@ -5,6 +5,7 @@ import enums.EmotionalStat;
 import enums.RelationType;
 import exception.DreamIsNotNightmare;
 import furniture.Bed;
+import locations.House;
 import locations.Location;
 import locations.Tree;
 import mind.Mind;
@@ -28,9 +29,9 @@ public class Rachel extends Person implements Run {
     public Pain getPain(){
         return pain;
     }
-    public void takeZeldaToBed(Zelda zelda, Bed bed){
-        bed.addPerson(zelda);
-        System.out.printf("%s притащила %s в %s\n", this, RelationType.SISTER, bed);
+    public void takeZeldaToBed(Zelda zelda, House.Room room){
+        room.getBed().addPerson(zelda);
+        System.out.printf("%s притащила %s в %s\n", this, RelationType.SISTER, room.getBed());
         blouse.tear();
         pain.increase(10);
         setHp(61);
@@ -45,7 +46,7 @@ public class Rachel extends Person implements Run {
             System.out.printf("Ей стало %s и она проснулась\n", EmotionalStat.TRAUMATIZED);}
         else if (x>=20) {setEmotionalStat(EmotionalStat.ANXIOUS);
             System.out.printf("Ей стало %s и она проснулась\n", EmotionalStat.ANXIOUS);}
-        else throw new DreamIsNotNightmare("Рейчел снится не страшный сон");
+        else throw new DreamIsNotNightmare("Рейчел снится не страшный сон\n");
     }
     public void run(Location l1, Location l2){
         l1.deletePerson(this);

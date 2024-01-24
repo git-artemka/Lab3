@@ -4,7 +4,6 @@ import enums.RoomStat;
 import exception.PersonIsNotInHouse;
 import furniture.Bed;
 import furniture.Box;
-import furniture.ToiletTable;
 import people.Person;
 
 import java.util.ArrayList;
@@ -15,6 +14,7 @@ public class House extends Location{
     public House() {
         super("Дом Голдманов");
         room = new Room();
+        room.addBed();
         System.out.println(this.getName());
     }
     public class Room {
@@ -25,6 +25,8 @@ public class House extends Location{
 
         public Room(){
             roomStat = RoomStat.NORMAL;
+        }
+        public void addBed(){
             bed = new Bed();
         }
         public Bed getBed(){
@@ -57,7 +59,6 @@ public class House extends Location{
         }
     }
     Room toiletRoom = new Room(){
-        @Override
         public String toString(){
             return "Туалетная комната";
         }
