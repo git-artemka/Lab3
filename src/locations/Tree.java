@@ -1,7 +1,7 @@
 package locations;
 
 public class Tree {
-    private int strength;
+    private final int strength;
     public Tree(int x){
         strength = x;
     }

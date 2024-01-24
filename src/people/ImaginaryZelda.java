@@ -4,7 +4,7 @@ import enums.RelationType;
 import staff.Meningit;
 
 public class ImaginaryZelda extends Person{
-    private Meningit meningit;
+    private final Meningit meningit;
     public ImaginaryZelda() {
         super(RelationType.SISTER, 40);
         meningit = new Meningit(30);

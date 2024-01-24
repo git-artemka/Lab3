@@ -1,9 +1,8 @@
 package staff;
 
-import people.Person;
 
 public class Aspirin {
-    private int power;
+    private final int power;
     public Aspirin(int power) {
         this.power = power;
     }

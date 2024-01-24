@@ -1,35 +1,26 @@
 package people;
 
 import enums.RelationType;
+import locations.House;
 import locations.Tree;
+import staff.Phone;
 
 public class Neighbor extends Person {
     public Neighbor() {
         super(RelationType.NEIGHBOR, 100);
     }
-    public void takeRachelFrom(Rachel rachel, Tree tree){
+    public void takeRachelFrom(Rachel rachel, Tree tree, House house){
        rachel.getMouth().getTongue().setAbleToSpeak(false);
-        System.out.printf("%s оторвала %s от %s. Та замолчала\n", RelationType.NEIGHBOR, rachel, tree);
+       house.addPeople(this, rachel);
+       System.out.printf("%s оторвала %s от %s. Та замолчала\n", RelationType.NEIGHBOR, rachel, tree);
     }
-    public void callTo(Person to){
-        phone.createConnection(this, to);
-        phone.endConnection(this, to);
-        System.out.printf("%s позвонила %s\n",RelationType.NEIGHBOR, to );
-
+    public void callTo(Person person){
+        Phone phone = new Phone();
+        phone.createConnection(this, person);
+        phone.endConnection(this, person);
+        System.out.printf("%s позвонила %s\n",RelationType.NEIGHBOR, person);
+        getLocation().addPeople(person);
     }
-    Connection phone = new Connection(){
-        public void createConnection(Person from, Person to){
-            from.setAtPhone(true);
-            to.setAtPhone(true);
-        }
-        public void endConnection(Person from, Person to){
-            from.setAtPhone(false);
-            to.setAtPhone(false);
-        }
-    };
 
 }
-interface Connection{
-    void createConnection(Person from, Person to);
-    void endConnection(Person from, Person to);
-}
+

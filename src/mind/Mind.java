@@ -6,8 +6,12 @@ import people.ImaginaryZelda;
 import people.Rachel;
 
 public class Mind {
+    private final Rachel owner;
     private ImaginaryRachel imaginaryRachel;
     private ImaginaryZelda imaginaryZelda;
+    public Mind(Rachel rachel){
+        owner = rachel;
+    }
    public Dream generateDream(){
        System.out.printf("%s создает сон\n", this);
        return new Dream();
@@ -20,18 +24,18 @@ public class Mind {
        imaginaryRachel = new ImaginaryRachel();
        return imaginaryRachel;
    }
-   public void influenceToRachel(Rachel rachel){
-        rachel.setEmotionalStat(EmotionalStat.ANXIOUS);
-        rachel.getPain().increase(imaginaryRachel.getMeningit().getPower());
+   public void influence(){
+        owner.setEmotionalStat(EmotionalStat.ANXIOUS);
+        owner.getPain().increase(imaginaryRachel.getMeningit().getPower());
    }
-   public void clear(Rachel rachel){
-       if(rachel.getPain().getPower() == 0) {
+   public void clear(){
+       if(owner.getPain().getPower() == 0) {
             imaginaryZelda = null;
             imaginaryRachel = null;
-            rachel.setHp(100);
-            rachel.setEmotionalStat(EmotionalStat.NORMAL);
-            rachel.changeBlouse();
-            System.out.printf("%s пришла в себя\n", rachel);
+            owner.setHp(100);
+            owner.setEmotionalStat(EmotionalStat.NORMAL);
+            owner.changeBlouse();
+            System.out.printf("%s пришла в себя\n", owner);
        }
    }
    @Override

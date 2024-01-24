@@ -5,7 +5,6 @@ public enum RelationType {
     SISTER("сестру"),
     NEIGHBOR("Cоседка"),
     DOCTOR("Доктор"),
-    FRIEND("друг"),
     PROTAGONIST("главная героиня");
     private final String relationType;
     RelationType(String relationType) {

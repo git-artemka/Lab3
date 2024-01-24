@@ -1,7 +1,7 @@
 package locations;
 
 public class Street extends Location{
-    private Tree tree;
+    private final Tree tree;
     public Street(){
         super("Улица");
         tree = new Tree(20);

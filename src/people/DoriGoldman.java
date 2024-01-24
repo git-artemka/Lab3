@@ -1,6 +1,5 @@
 package people;
 
-import Interfaces.Choke;
 import Interfaces.Convince;
 import enums.RelationType;
 import locations.House;
@@ -13,9 +12,10 @@ public class DoriGoldman extends Person implements Convince {
     }
     public void changeRoom(House house){
         house.getRoom().addPeople(this);
+        house.createToiletRoom();
         house.getRoom().deletePerson(this);
-        System.out.printf("%s устроила тут", this);
-        house.new ToiletRoom();
+        System.out.printf("%s устроила тут %s\n", this, house.getRoom());
+
     }
     public void hear(String phrase){
         if(Objects.equals(phrase, phrase.toUpperCase())) System.out.print("Мама услышала");

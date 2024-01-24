@@ -19,14 +19,11 @@ public class Rachel extends Person implements Run {
     public Rachel () {
         super(RelationType.PROTAGONIST, 100);
         blouse = new Blouse();
-        mind = new Mind();
+        mind = new Mind(this);
         pain = new Pain();
     }
     public Mind getMind(){
         return mind;
-    }
-    public Blouse getBlouse(){
-        return blouse;
     }
     public Pain getPain(){
         return pain;

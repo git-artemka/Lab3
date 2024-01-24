@@ -2,9 +2,10 @@ package locations;
 
 import enums.RoomStat;
 import exception.PersonIsNotInHouse;
-import furniture.Box;
-import people.Person;
 import furniture.Bed;
+import furniture.Box;
+import furniture.ToiletTable;
+import people.Person;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -21,21 +22,25 @@ public class House extends Location{
         private RoomStat roomStat;
         private Bed bed;
         private Box box;
+
         public Room(){
             roomStat = RoomStat.NORMAL;
             bed = new Bed();
+        }
+        public Bed getBed(){
+            return bed;
+        }
+        public void setBox(Box box){
+            this.box = box;
         }
         public void setRoomStat(RoomStat roomStat){
             this.roomStat = roomStat;
             System.out.printf("%s стала %s\n", this, roomStat);
         }
 
-        public Bed getBed(){
-            return bed;
-        }
         public void addPeople(Person...p) {
             for(Person person : p){
-                if(!getPeopleInLocation().contains(person)) throw new PersonIsNotInHouse("Человека нет в доме");
+                if(!getPeopleInLocation().contains(person)) throw new PersonIsNotInHouse(" нет в доме", person);
             }
             Collections.addAll(peopleInRoom, p);
         }
@@ -45,25 +50,20 @@ public class House extends Location{
         public void deleteBed(){
             bed = null;
         }
-        public void addBox(int amountOfThings){
-            box = new Box(amountOfThings);
-            System.out.printf("Осталась %s с %s вещей\n", box, amountOfThings);
-        }
+
         @Override
         public String toString(){
             return "Комната";
         }
     }
-    public class ToiletRoom{
-        private boolean isExist = false;
-        public ToiletRoom(){
-            isExist = true;
-            System.out.print(this);
-        }
+    Room toiletRoom = new Room(){
         @Override
         public String toString(){
-            return " туалетную комнату\n";
+            return "Туалетная комната";
         }
+    };
+    public void createToiletRoom(){
+        room = toiletRoom;
     }
     public Room getRoom(){
         return room;

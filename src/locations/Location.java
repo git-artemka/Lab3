@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public abstract class Location {
-    private String name;
+    private final String name;
     private final ArrayList<Person> peopleInLocation = new ArrayList<>();
     public Location(String name){
         this.name = name;

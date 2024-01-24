@@ -39,14 +39,12 @@ public class Main{
 
         rachel.getMouth().speak("Зельда умерла!");
         Neighbor neighbor = new Neighbor();
-        neighbor.takeRachelFrom(rachel, street.getTree());
+        neighbor.takeRachelFrom(rachel, street.getTree(), house);
 
         Doctor doctor = new Doctor();
 
         neighbor.callTo(doctor);
         neighbor.callTo(doriGoldman);
-        house.addPeople(rachel);
-        doctor.goToHouse(house);
 
 
         rachel.drinkTea(doctor.makeTea());
@@ -62,11 +60,11 @@ public class Main{
         house.addPeople(imaginaryRachel);
         imaginaryRachel.becomeMonster();
 
-        rachel.getMind().influenceToRachel(rachel);
+        rachel.getMind().influence();
         doctor.convince(rachel);
         doriGoldman.convince(rachel);
         rachel.getPain().decrease();
-        rachel.getMind().clear(rachel);
+        rachel.getMind().clear();
 
     }
 }

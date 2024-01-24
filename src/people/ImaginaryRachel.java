@@ -40,6 +40,7 @@ public class ImaginaryRachel extends Person implements Run, Choke {
         pee(bed);
         choke();
         setHp(0);
+        bed.cleanBed();
         System.out.print("И умрет\n");
     }
     public void pee(Bed bed){

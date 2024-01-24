@@ -14,7 +14,7 @@ public abstract class Person {
     private EmotionalStat emotionalStat = EmotionalStat.NORMAL;
     private final Mouth mouth;
     private Location location;
-    private boolean atPhone = false; //переделать
+    private boolean onCall;
     public Person(RelationType relationType, double hp){
         this.relationType = relationType;
         setHp(hp);
@@ -26,7 +26,7 @@ public abstract class Person {
         else if (hp==0) setPhysicalStat(PhysicalStat.DEAD);
         else setPhysicalStat(PhysicalStat.ILL);
     }
-    public void setPhysicalStat(PhysicalStat stat){
+    private void setPhysicalStat(PhysicalStat stat){
         physicalStat = stat;
         if (stat == PhysicalStat.DEAD) getLocation().deletePerson(this);
     }
@@ -36,8 +36,8 @@ public abstract class Person {
     public void setEmotionalStat(EmotionalStat stat){
         emotionalStat = stat;
     }
-    public void setAtPhone(boolean b){
-        atPhone = b;
+    public void setOnCall(boolean onCall){
+        this.onCall = onCall;
     }
     public double getHp(){
         return hp;
@@ -50,6 +50,9 @@ public abstract class Person {
     }
     public Mouth getMouth(){
         return mouth;
+    }
+    public boolean getOnCall(){
+        return onCall;
     }
     public class Mouth {
         private final Tongue tongue;
@@ -71,8 +74,9 @@ public abstract class Person {
             }
         }
         public String speak(String phrase){
-            System.out.printf("%s сказала''%s''\n", this.person(), phrase);
-            if (tongue.isAbleToSpeak) return phrase;
+            if (tongue.isAbleToSpeak) {
+                System.out.printf("%s сказала''%s''\n", this.person(), phrase);
+                return phrase;}
             return null;
         }
         public Person person(){
